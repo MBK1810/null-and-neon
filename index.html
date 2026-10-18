@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NULL &amp; NEON — Meet Nibble, a tiny digital creature who repairs broken digital rooms and forgotten websites. An interactive character portfolio hackathon site." />
+  <title>NULL &amp; NEON — Meet Nibble the Glitch Sprite</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23a34063' rx='6'/><text x='5' y='24' font-size='20'>✦</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Nibble mini cursor -->
+      <circle cx="10" cy="24" r="9" fill="#a34063" />
+      <circle cx="7" cy="21" r="2.5" fill="white" />
+      <circle cx="13" cy="21" r="2.5" fill="white" />
+      <circle cx="7.8" cy="21.4" r="1.2" fill="#0d0a0e" />
+      <circle cx="13.8" cy="21.4" r="1.2" fill="#0d0a0e" />
+      <circle cx="10" cy="25.5" r="1.5" fill="rgba(255,255,255,0.5)" />
+      <line x1="7" y1="14" x2="5" y2="8" stroke="#a34063" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="5" cy="7.5" r="2" fill="#39ff14"/>
+      <line x1="13" y1="14" x2="15" y2="8" stroke="#a34063" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="15" cy="7.5" r="2" fill="#ff2d78"/>
+    </svg>
+  </div>
+
+  <!-- Touch companion (visible instead of cursor on touch devices) -->
+  <div id="touch-companion" role="status" aria-live="polite" tabindex="0">
+    <span>✦</span> <span id="touch-msg">tap nibble!</span>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="NULL &amp; NEON Home">NULL&amp;NEON</a>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#character">SHEET</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#origin">ORIGIN</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="btn-toggle" id="day-night-btn" aria-label="Toggle night mode" aria-pressed="false">☀️ DAY</button>
+      <button class="nav-burger" id="nav-burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" aria-label="Hero — Meet Nibble">
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <!-- Pixel dust particles -->
+      <div class="pixel-dust" aria-hidden="true" id="pixel-dust"></div>
+
+      <div class="hero-content">
+        <!-- Character -->
+        <div class="character-wrap">
+          <div class="character-glow" aria-hidden="true"></div>
+          <!-- Nibble SVG — original CSS illustration -->
+          <svg id="nibble-svg" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+               role="img" aria-label="Nibble the Glitch Sprite — a round, bean-shaped digital creature with glowing eyes and data-stream antennae"
+               tabindex="0">
+
+            <!-- Body glow aura -->
+            <circle cx="90" cy="100" r="68" fill="rgba(163,64,99,0.10)"/>
+
+            <!-- Shadow -->
+            <ellipse cx="90" cy="158" rx="45" ry="10" fill="rgba(92,64,51,0.18)"/>
+
+            <!-- Patch cloak / cape details -->
+            <path d="M48 125 Q90 148 132 125 Q120 152 90 155 Q60 152 48 125Z" fill="#7a5a48" opacity="0.6"/>
+
+            <!-- Main body -->
+            <ellipse cx="90" cy="105" rx="52" ry="56" fill="#c4587e"/>
+            <!-- Belly highlight -->
+            <ellipse cx="90" cy="110" rx="32" ry="36" fill="#d4789e" opacity="0.45"/>
+
+            <!-- Repair tool belt -->
+            <rect x="52" y="128" width="76" height="9" rx="4" fill="#5c4033" opacity="0.9"/>
+            <!-- Belt buckle -->
+            <rect x="84" y="126" width="12" height="13" rx="2" fill="#a34063"/>
+            <rect x="86" y="128" width="8" height="9" rx="1" fill="#39ff14" opacity="0.8"/>
+
+            <!-- Eyes — glowing -->
+            <g class="nibble-eye" transform-origin="90 97">
+              <!-- left eye -->
+              <ellipse cx="73" cy="97" rx="11" ry="12" fill="white"/>
+              <ellipse cx="73" cy="97" rx="7" ry="8" fill="#1a0e1a"/>
+              <circle cx="75" cy="93" r="3" fill="#00ffe7"/>
+              <circle cx="76.5" cy="92" r="1.2" fill="white"/>
+              <!-- right eye -->
+              <ellipse cx="107" cy="97" rx="11" ry="12" fill="white"/>
+              <ellipse cx="107" cy="97" rx="7" ry="8" fill="#1a0e1a"/>
+              <circle cx="109" cy="93" r="3" fill="#00ffe7"/>
+              <circle cx="110.5" cy="92" r="1.2" fill="white"/>
+            </g>
+
+            <!-- Tiny nose dot -->
+            <circle cx="90" cy="107" r="2.5" fill="rgba(92,64,51,0.5)"/>
+
+            <!-- Smile -->
+            <path d="M79 114 Q90 122 101 114" stroke="#5c4033" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+            <!-- Rosy cheeks -->
+            <ellipse cx="64" cy="112" rx="8" ry="5" fill="#ff7eb3" opacity="0.4"/>
+            <ellipse cx="116" cy="112" rx="8" ry="5" fill="#ff7eb3" opacity="0.4"/>
+
+            <!-- Left antenna -->
+            <g class="nibble-antenna">
+              <line x1="74" y1="50" x2="62" y2="22" stroke="#a34063" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="60" cy="19" r="6" fill="#39ff14"/>
+              <circle cx="60" cy="19" r="3" fill="white" opacity="0.6"/>
+            </g>
+
+            <!-- Right antenna -->
+            <g class="nibble-antenna-r">
+              <line x1="106" y1="50" x2="118" y2="22" stroke="#a34063" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="120" cy="19" r="6" fill="#ff2d78"/>
+              <circle cx="120" cy="19" r="3" fill="white" opacity="0.6"/>
+            </g>
+
+            <!-- Ears/side nubs -->
+            <circle cx="40" cy="90" r="12" fill="#b85080"/>
+            <circle cx="40" cy="90" r="7" fill="#d4789e" opacity="0.5"/>
+            <circle cx="140" cy="90" r="12" fill="#b85080"/>
+            <circle cx="140" cy="90" r="7" fill="#d4789e" opacity="0.5"/>
+
+            <!-- Tiny repair wrench in left hand -->
+            <g transform="translate(28 118) rotate(-30)">
+              <rect x="0" y="-3" width="18" height="6" rx="3" fill="#5c4033"/>
+              <rect x="14" y="-5" width="7" height="10" rx="2" fill="#7a5a48"/>
+            </g>
+
+            <!-- Data stream sparks -->
+            <circle cx="30" cy="68" r="2" fill="#39ff14" opacity="0.7"/>
+            <circle cx="148" cy="72" r="2" fill="#ff2d78" opacity="0.7"/>
+            <circle cx="24" cy="110" r="1.5" fill="#00ffe7" opacity="0.6"/>
+            <circle cx="156" cy="104" r="1.5" fill="#ffe000" opacity="0.6"/>
+            <circle cx="55" cy="42" r="1.5" fill="#ff2d78" opacity="0.5"/>
+            <circle cx="126" cy="38" r="1.5" fill="#39ff14" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <!-- Greeting Bubble -->
+        <div class="greeting-bubble" id="greeting-bubble" tabindex="0" role="button"
+             aria-label="Click to hear Nibble's greeting">
+          <span id="greeting-text">Loading greeting...</span><span class="blink-cursor" aria-hidden="true"></span>
+        </div>
+
+        <h1 class="hero-tagline">NULL &amp; NEON</h1>
+        <p class="hero-sub">
+          A tiny glitch sprite who wanders forgotten websites, soldering broken code and decorating digital ruins.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#character" class="btn-primary" id="meet-nibble-btn">Meet Nibble ↓</a>
+          <a href="#projects" class="btn-secondary" id="explore-btn">Explore Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHARACTER SHEET ===== -->
+    <section id="character" aria-labelledby="char-heading">
+      <div class="text-center">
+        <span class="section-label">// CHARACTER_DATA.txt</span>
+        <h2 class="section-title" id="char-heading">NIBBLE'S PROFILE</h2>
+        <div class="section-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="sheet-grid">
+        <!-- 1. Name -->
+        <div class="sheet-card">
+          <span class="card-icon" aria-hidden="true">🏷️</span>
+          <p class="card-heading">Name</p>
+          <p class="card-value">
+            <strong>Nibble</strong><br/>
+            <em style="font-size:0.85rem;opacity:0.7;">(pronounced "NI-bull" — short for NI-Bit-Byte-Lil)</em>
+          </p>
+        </div>
+
+        <!-- 2. Species / Appearance / Personality -->
+        <div class="sheet-card">
+          <span class="card-icon" aria-hidden="true">🌀</span>
+          <p class="card-heading">Species &amp; Appearance</p>
+          <p class="card-value">
+            <strong>Glitch Sprite</strong> — a bean-shaped, rosy-cheeked digital creature with two data-stream antennae (one green, one pink), cyan glowing eyes, and a tiny repair belt loaded with soldering tools. Roughly 3 kilobytes big.
+          </p>
+        </div>
+
+        <!-- 3. Personality -->
+        <div class="sheet-card">
+          <span class="card-icon" aria-hidden="true">💫</span>
+          <p class="card-heading">Personality</p>
+          <p class="card-value">
+            Eternally curious and endlessly gentle. Gets flustered by perfectly formatted code. Hoards broken pixel shards like treasure. Communicates mostly in soft chirps and blinking dots, occasionally in whole sentences when very excited.
+          </p>
+        </div>
+
+        <!-- 4. Craft -->
+        <div class="sheet-card">
+          <span class="card-icon" aria-hidden="true">🔧</span>
+          <p class="card-heading">Craft</p>
+          <p class="card-value">
+            Digital restoration — mending broken layouts, re-illuminating dark rooms, patching corrupted memory banks. Also catalogues lost GIF collections and rebuilds fallen navigation menus from scratch.
+          </p>
+        </div>
+
+        <!-- 5. Origin -->
+        <div class="sheet-card">
+          <span class="card-icon" aria-hidden="true">🌌</span>
+          <p class="card-heading">Origin</p>
+          <p class="card-value">
+            Born from a corrupted pixel in a forgotten 404 page, somewhere between the years 1998 and an unreachable future. Nobody intentionally created Nibble — they simply <em>appeared</em>, tools in hand, ready to fix things.
+          </p>
+        </div>
+
+        <!-- Tagline — wide -->
+        <div class="sheet-card wide">
+          <span class="card-icon" aria-hidden="true">✨</span>
+          <p class="card-heading">Tagline</p>
+          <p class="card-value tagline">"Every broken link is just a room waiting to be found."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" aria-labelledby="proj-heading">
+      <div class="text-center">
+        <span class="section-label">// NIBBLE'S_WORKSHOP/</span>
+        <h2 class="section-title" id="proj-heading">SHOWCASE PROJECTS</h2>
+        <div class="section-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: Glitch Repair Toy -->
+        <article class="project-card" aria-labelledby="proj1-title">
+          <div class="project-header">
+            <span class="project-icon" aria-hidden="true">🛠️</span>
+            <h3 class="project-title" id="proj1-title">GLITCH REPAIR TOY</h3>
+            <span class="project-badge">INTERACTIVE</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              A canvas broken by noise. Use your cursor (or finger) to paint repairs. Switch between paint brushes to heal different glitch types. Every stroke earns repair XP!
+            </p>
+            <div class="glitch-canvas-wrap">
+              <canvas id="glitch-canvas" width="560" height="180"
+                      aria-label="Glitch repair canvas — draw to fix the corruption"
+                      role="img" tabindex="0"></canvas>
+            </div>
+            <div class="glitch-controls">
+              <button class="glitch-btn active" id="btn-fix" data-tool="fix">🩹 FIX</button>
+              <button class="glitch-btn" id="btn-paint" data-tool="paint">🎨 PIXEL</button>
+              <button class="glitch-btn" id="btn-spark" data-tool="spark">⚡ SPARK</button>
+              <button class="glitch-btn" id="btn-reset-canvas" data-tool="reset">↺ RESET</button>
+            </div>
+            <p class="glitch-score" id="glitch-score">REPAIR XP: 0 ░░░░░░░░░░</p>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: Digital Memory Archive -->
+        <article class="project-card" aria-labelledby="proj2-title">
+          <div class="project-header">
+            <span class="project-icon" aria-hidden="true">📼</span>
+            <h3 class="project-title" id="proj2-title">MEMORY ARCHIVE</h3>
+            <span class="project-badge">MATCH GAME</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Nibble discovered 8 lost digital artefacts scattered in a glitchy memory bank. Flip cards to pair them. Recover all 8 artefacts to unlock the archive!
+            </p>
+            <div class="memory-grid" id="memory-grid" role="grid" aria-label="Memory card matching game">
+              <!-- Cards injected by JS -->
+            </div>
+            <div class="memory-info">
+              <span id="memory-moves">MOVES: 0</span>
+              <button class="memory-btn" id="memory-reset">↺ NEW GAME</button>
+              <span id="memory-status">find the pairs!</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: Secret Room Explorer -->
+        <article class="project-card" aria-labelledby="proj3-title">
+          <div class="project-header">
+            <span class="project-icon" aria-hidden="true">🚪</span>
+            <h3 class="project-title" id="proj3-title">SECRET ROOM EXPLORER</h3>
+            <span class="project-badge">ADVENTURE</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Nibble has discovered a hidden wing of the forgotten website. Navigate through 5 secret rooms, each with a puzzle or surprise. Use keyboard or buttons!
+            </p>
+            <div class="room-viewport" id="room-viewport" aria-live="polite" aria-label="Secret room explorer">
+              <pre class="room-art" id="room-art"></pre>
+              <p class="room-desc" id="room-desc"></p>
+              <div class="room-choices" id="room-choices" role="group" aria-label="Room choices">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== ORIGIN STORY ===== -->
+    <section id="origin" aria-labelledby="origin-heading">
+      <div class="text-center">
+        <span class="section-label">// ORIGIN_LOG.dat</span>
+        <h2 class="section-title" id="origin-heading">THE STORY OF NIBBLE</h2>
+        <div class="section-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="story-scroll" id="story-scroll">
+
+        <div class="story-scene" data-scene="0">
+          <div class="scene-node" aria-hidden="true">🌑</div>
+          <div class="scene-text">
+            <h3 class="scene-heading">THE DEAD SERVER</h3>
+            <p class="scene-body">
+              Somewhere on a server that hadn't been pinged in seventeen years, a single pixel refused to go dark. It pulsed — pink, then green, then cyan — drawing tiny loops of energy in the empty void of a forgotten 404 page.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-scene" data-scene="1">
+          <div class="scene-node" aria-hidden="true">✨</div>
+          <div class="scene-text">
+            <h3 class="scene-heading">THE BIRTH</h3>
+            <p class="scene-body">
+              When the loops grew large enough, they folded inward and became <em>Nibble</em>. Two cyan eyes blinked open. A pair of glowing antennae quivered. A wrench materialised in a chubby little hand. Nibble had no creator — only purpose.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-scene" data-scene="2">
+          <div class="scene-node" aria-hidden="true">🔧</div>
+          <div class="scene-text">
+            <h3 class="scene-heading">THE FIRST REPAIR</h3>
+            <p class="scene-body">
+              The 404 page was bare — just a dusty error message and broken image tags. Nibble patched each empty <code style="color:var(--neon-pink);font-family:var(--font-pixel)">&lt;img&gt;</code> with hand-drawn sketches, replaced the error text with a warm note, and hung pixel fairy-lights across the header. It was, by all accounts, extremely cosy.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-scene" data-scene="3">
+          <div class="scene-node" aria-hidden="true">🗺️</div>
+          <div class="scene-text">
+            <h3 class="scene-heading">THE DISCOVERY</h3>
+            <p class="scene-body">
+              Following a trail of broken hyperlinks, Nibble discovered an entire forgotten wing of the old web: abandoned guestbooks, ghost GIF galleries, crashed music players still holding the memory of a MIDI file. Each one deserved to live again.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-scene" data-scene="4">
+          <div class="scene-node" aria-hidden="true">🌐</div>
+          <div class="scene-text">
+            <h3 class="scene-heading">THE ONGOING MISSION</h3>
+            <p class="scene-body">
+              To this day, Nibble wanders from forgotten domain to forgotten domain, soldering, sketching, and softly humming to corrupted audio files. The work is never finished. Every broken link is just a room waiting to be found.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" aria-label="Site footer">
+    <svg class="footer-char" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="32" cy="36" r="22" fill="#c4587e"/>
+      <ellipse cx="32" cy="40" rx="14" ry="16" fill="#d4789e" opacity="0.4"/>
+      <circle cx="24" cy="34" r="5" fill="white"/><circle cx="24" cy="34" r="3" fill="#1a0e1a"/><circle cx="25" cy="32" r="1.2" fill="#00ffe7"/>
+      <circle cx="40" cy="34" r="5" fill="white"/><circle cx="40" cy="34" r="3" fill="#1a0e1a"/><circle cx="41" cy="32" r="1.2" fill="#00ffe7"/>
+      <path d="M27 43 Q32 47 37 43" stroke="#5c4033" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <line x1="26" y1="16" x2="21" y2="5" stroke="#c4587e" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="20" cy="4" r="3" fill="#39ff14"/>
+      <line x1="38" y1="16" x2="43" y2="5" stroke="#c4587e" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="44" cy="4" r="3" fill="#ff2d78"/>
+    </svg>
+
+    <p class="footer-logo">NULL &amp; NEON</p>
+    <p class="footer-tagline">"Every broken link is just a room waiting to be found."</p>
+
+    <ul class="footer-links" role="list">
+      <li><a href="#hero">HOME</a></li>
+      <li><a href="#character">CHARACTER</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#origin">ORIGIN</a></li>
+    </ul>
+
+    <p class="footer-credits">
+      Fonts: Space Grotesk, VT323, Crimson Pro via Google Fonts (Open Font License).<br/>
+      No external images used — all artwork is original inline SVG.<br/>
+      No third-party JS libraries. Built with plain HTML, CSS &amp; JavaScript.<br/>
+      Made with 💾 for a hackathon by a beginner using Google Antigravity.
+    </p>
+    <p class="footer-copy">NULL &amp; NEON © 2026 — NIBBLE LIVES ✦</p>
+  </footer>
+
+  <!-- ===== EASTER EGG MODAL ===== -->
+  <div id="easter-egg-modal" role="dialog" aria-modal="true" aria-labelledby="egg-title" aria-describedby="egg-msg">
+    <div class="egg-box">
+      <p class="egg-title" id="egg-title">⬆⬆⬇⬇◄►◄►BA</p>
+      <p class="egg-msg" id="egg-msg">
+        🎉 YOU FOUND THE SECRET!<br/><br/>
+        Nibble does a little happy dance and leaves you a gift:<br/>
+        <span style="font-size:2rem">🌟📼🔧✨💾🌐</span><br/><br/>
+        <em style="font-size:0.8rem;color:#39ff14">Secret coordinates: NULL://NEON/ROOM_7/???.html</em>
+      </p>
+      <button class="egg-close" id="egg-close" autofocus>CLOSE ✦</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
